@@ -1,0 +1,34 @@
+cat = codesters.Sprite("cat",-130,0)
+mouse = codesters.Sprite("mouse",130,0)
+
+score = 0
+scoreDisplay = codesters.Text("Score: 0")
+mouseCaught = False
+
+def up():
+    cat.move_up(15)
+    
+def down():
+    cat.move_down(15)
+    
+def left():
+    cat.move_left(15)
+    
+def right():
+    cat.move_right(15)
+    
+def cat_collision(sprite, hit_sprite):
+    global score
+    score += 1
+    scoreDisplay.set_text("Score: "+str(score))
+    mouse.go_to(random.randint(-240,240),random.randint(-240,240))
+    
+cat.event_collision(cat_collision)
+    
+
+    
+stage.event_key("up",up)
+stage.event_key("down",down)
+stage.event_key("left",left)
+stage.event_key("right",right)
+
